@@ -1,0 +1,114 @@
+frontend/index.html.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101c2c">
+  <title>HeatSafe Edge | Heat Intelligence</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">H</div>
+      <div>
+        <h1>HeatSafe Edge</h1>
+        <p>Localized Heat Intelligence</p>
+      </div>
+    </div>
+    <div id="connection" class="status-pill">Connecting...</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">ENVIRONMENTAL MONITORING SYSTEM</p>
+        <h2>Know your environment.<br><span>Prepare for the heat.</span></h2>
+        <p class="hero-copy">
+          Live environmental measurements, trend monitoring and
+          a local prediction baseline.
+        </p>
+      </div>
+      <div class="hero-mark" aria-hidden="true">°C</div>
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <p class="eyebrow">LIVE MONITORING</p>
+        <h2>Current conditions</h2>
+      </div>
+      <span id="updated" class="muted">Waiting for data</span>
+    </section>
+
+    <section class="metrics">
+      <article class="metric-card">
+        <p>Air temperature</p>
+        <div class="metric-value"><span id="temperature">--</span><small>°C</small></div>
+        <p class="metric-note">Measured air temperature</p>
+      </article>
+
+      <article class="metric-card">
+        <p>Relative humidity</p>
+        <div class="metric-value"><span id="humidity">--</span><small>%</small></div>
+        <p class="metric-note">Measured relative humidity</p>
+      </article>
+
+      <article class="metric-card">
+        <p>15-minute forecast</p>
+        <div class="metric-value"><span id="prediction">--</span><small>°C</small></div>
+        <p class="metric-note" id="model-label">Waiting for data</p>
+      </article>
+
+      <article class="metric-card">
+        <p>Sensor data</p>
+        <div class="metric-value metric-status" id="sensor-status">Waiting</div>
+        <p class="metric-note" id="source-label">No readings received</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">RECENT MEASUREMENTS</p>
+          <h2>Temperature history</h2>
+        </div>
+        <span class="chart-key"><i></i> Temperature °C</span>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="temperature-chart" aria-label="Temperature history chart"></canvas>
+        <p id="empty-chart" class="empty-state">Waiting for readings to build the chart.</p>
+      </div>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="panel">
+        <p class="eyebrow">PREDICTION STATUS</p>
+        <h2>Forecast transparency</h2>
+        <p id="prediction-note" class="body-copy">
+          The forecast will be available when readings arrive.
+        </p>
+        <div class="notice">
+          The initial forecast uses a persistence baseline, not a trained AI model.
+        </div>
+      </article>
+
+      <article class="panel">
+        <p class="eyebrow">DEVICE HEALTH</p>
+        <h2>System information</h2>
+        <div class="info-row"><span>Backend</span><strong id="backend-status">Checking</strong></div>
+        <div class="info-row"><span>Data source</span><strong id="data-source">Unknown</strong></div>
+        <div class="info-row"><span>Latest reading</span><strong id="last-reading">None</strong></div>
+        <div class="info-row"><span>Heat assessment</span><strong>Not configured</strong></div>
+      </article>
+    </section>
+
+    <footer>
+      <p>HeatSafe Edge · Research prototype · Not a medical diagnostic system</p>
+      <p>Forecasts and heat-risk assessments require validation before safety-critical use.</p>
+    </footer>
+  </main>
+</body>
+</html>

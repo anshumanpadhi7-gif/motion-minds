@@ -1,0 +1,163 @@
+frontend/style.css.
+
+
+:root {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --panel: #131f30;
+  --panel-2: #19283b;
+  --text: #edf3fa;
+  --muted: #9aaabd;
+  --line: #2a3a4f;
+  --accent: #64e0c0;
+  --blue: #80b8ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 22px max(5%, calc((100% - 1200px) / 2));
+  border-bottom: 1px solid var(--line);
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: var(--accent);
+  color: #0b1220;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 3px; font-size: 20px; }
+.brand p, .muted, .metric-card p, footer { color: var(--muted); }
+.brand p { margin: 0; font-size: 12px; }
+
+.status-pill {
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.status-pill.online { color: var(--accent); }
+.status-pill.offline { color: #ffbc91; }
+
+main { max-width: 1200px; margin: auto; padding: 34px 24px; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: clamp(25px, 5vw, 52px);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(125deg, #192c41, #122132);
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.hero h2 { font-size: clamp(29px, 4vw, 47px); line-height: 1.12; }
+.hero h2 span { color: var(--accent); }
+.hero-copy { max-width: 490px; color: var(--muted); line-height: 1.7; }
+.hero-mark { color: #64e0c0; opacity: .2; font-size: clamp(70px, 13vw, 155px); font-weight: 900; }
+
+.section-heading, .panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 14px;
+  margin: 32px 0 16px;
+}
+
+.section-heading h2, .panel h2 { margin-bottom: 0; font-size: 21px; }
+.muted { font-size: 12px; }
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric-card, .panel {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  min-width: 0;
+}
+
+.metric-card > p:first-child { font-size: 13px; }
+.metric-value { margin: 19px 0 13px; font-size: clamp(28px, 3vw, 38px); font-weight: 750; }
+.metric-value small { margin-left: 5px; color: var(--muted); font-size: 15px; }
+.metric-note { margin-bottom: 0; font-size: 11px; line-height: 1.5; }
+.metric-status { font-size: 22px; }
+
+.panel { margin-top: 20px; }
+.panel-heading { margin-top: 0; }
+.panel-heading h2 { font-size: 20px; }
+.chart-key { color: var(--muted); font-size: 12px; }
+.chart-key i { display: inline-block; width: 9px; height: 9px; margin-right: 7px; border-radius: 50%; background: var(--accent); }
+
+.chart-wrap { position: relative; height: 260px; }
+canvas { display: block; width: 100%; height: 100%; }
+.empty-state {
+  position: absolute;
+  inset: 45% 10px auto;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+.bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.body-copy { margin: 18px 0; color: var(--muted); line-height: 1.7; }
+.notice { padding: 13px; border-radius: 10px; background: var(--panel-2); color: var(--blue); font-size: 12px; line-height: 1.6; }
+
+.info-row { display: flex; justify-content: space-between; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 12px; }
+.info-row:last-child { border-bottom: 0; }
+.info-row span { color: var(--muted); }
+.info-row strong { text-align: right; }
+
+footer { margin-top: 34px; text-align: center; font-size: 11px; line-height: 1.8; }
+
+@media (max-width: 850px) {
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bottom-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  main { padding: 22px 14px; }
+  .topbar { padding: 16px; }
+  .hero { padding: 25px 20px; }
+  .hero-mark { display: none; }
+  .metric-card, .panel { padding: 17px; }
+  .section-heading { align-items: start; flex-direction: column; }
+}
